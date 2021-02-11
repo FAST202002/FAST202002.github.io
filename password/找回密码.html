@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- saved from url=(0131)https://web.ccf.org.cn/CCF/findPwdBack.action?f=1&url=https://www.ccf.org.cn/ccf/sso/login?SiteID=122&Refer=https://www.ccf.org.cn/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>找回密码</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="./找回密码_files/mui.min.css">
+    <link rel="stylesheet" href="./找回密码_files/index1.css">
+	<link href="./找回密码_files/showDialog.css" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" src="./找回密码_files/showDialog.js"></script>
+	<script type="text/javascript" src="./找回密码_files/jquery-1.11.3.min.js"></script>
+</head>
+<body class="bg-img">
+    <header class="mui-bar mui-bar-nav type2">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:history.back(-1)">
+            <img src="./找回密码_files/left-arrow.png">
+        </a>
+        <h1 class="mui-title">找回密码</h1>
+    </header>
+		<div class="wm_header">
+			<img src="./找回密码_files/pc-wp_03.png" alt="" width="40%">
+		</div>
+			<div class="wm_main" style="height: 428px;">
+				<div class="wm_content">
+					<div class="wm_title"><img src="./找回密码_files/pc-wp_07.png" alt=""><span>找回密码</span></div>
+					<div class="wm_box">
+						<ul>
+							<li>
+								<span class="name">请输入您的姓名：</span>
+								<span class="wm_name"><input id="name" name="name" type="text"></span>
+							</li>
+							<li>
+								<span class="name" id="flag">请输入您的登录邮箱：</span>
+								<span class="wm_email"><input id="email" name="email" type="text"></span>
+							</li>
+							<li>
+								<span class="name">接收方式：</span>
+								<span class="wm_fs"><input id="emailtype" name="waytype" type="radio" value="0" onclick="upFlag(&#39;1&#39;)" checked="">邮箱  &nbsp; &nbsp; &nbsp; &nbsp;<input id="smstype" name="waytype" type="radio" onclick="upFlag(&#39;2&#39;)" value="1">短信</span>
+							</li>
+							<li>
+								<span></span>
+							</li>
+						</ul>
+              
+						<div class="wm_confirm"> <a onclick="sub();" href="javascript:alert('该用户不存在')">提交</a> <a class="for" onclick="closethis();" href="javascript:void(0)">取消</a></div>
+					</div>
+				</div>
+			</div>
+
+
+<script>
+	$(document).ready(function(){
+		var height = $(window).height();
+		$(".wm_main").css("height",height-95);
+	});
+	$(window).resize(function(){
+		var height = $(window).height();
+		$(".wm_main").css("height",height-95);
+	});
+function closethis(){
+	window.close();
+}
+function upFlag(obj){
+	if(obj == "1"){
+		$("#flag").html("请输入您的登录邮箱：");
+	}else{
+		$("#flag").html("请输入您的手机号：");
+	}
+}
+function sub(){
+	var name = document.getElementById("name").value;
+	var email = document.getElementById("email").value;
+	var type = "";
+	if(document.getElementById("emailtype").checked == true){
+		type = document.getElementById("emailtype").value;
+	}
+	
+	if(document.getElementById("smstype").checked == true){
+		type = document.getElementById("smstype").value;
+	}
+	
+	if(name == "" || email == "" ){
+		if(type == "0"){
+			alert("姓名、邮箱不能为空!");
+		}else{
+			alert("姓名、手机号不能为空!");
+		}
+		return false;
+	}
+	if(type == "0"){
+		var myreg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;;
+	    if (!myreg.test(email)) {
+	        alert("邮箱格式不正确");
+	        return false;
+	    }
+	}else{
+		var myreg = /^1[3456789]\d{9}$/;
+	    if (!myreg.test(email)) {
+	        alert("手机号格式不正确");
+	        return false;
+	    }
+	}
+	var xmlhttp = false;
+		 //开始初始化XMLHttpRequest对象
+         if(window.XMLHttpRequest) { //Mozilla 浏览器
+                 xmlhttp = new XMLHttpRequest();
+                 if (xmlhttp.overrideMimeType) {//设置MiME类别
+                         xmlhttp.overrideMimeType("text/xml");
+                 }
+         }
+         else if (window.ActiveXObject) { // IE浏览器
+                 try {
+                         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+                 } catch (e) {
+                         try {
+                                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                         } catch (e) {}
+                 }
+         }
+         if (!xmlhttp) { // 异常，创建对象实例失败
+                 window.alert("不能创建XMLHttpRequest对象实例.");
+                 return false;
+         }
+		 xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				if(type == "0"){
+					if(xmlhttp.responseText == "1"){
+						alert("邮件已发送，请登录邮箱完成密码找回操作！"); 	
+						window.open("http://"+"mail."+email.substring(email.indexOf('@') + 1),'_blank','Resizable=yes','fullscreen=yes');
+						//showDialog_fulong(alert,'邮件已发送，请登录邮箱完成密码更新操作！', '提示', 300);
+					}else{
+						//showDialog(alert, xmlhttp.responseText, '提示', 300);
+						alert(xmlhttp.responseText); 
+					}
+				}
+				if(type == "1"){
+					if(xmlhttp.responseText == "1"){
+						alert("验证码已发送到手机，请查收");
+						window.location.href = "/CCF/gotochangpwdforphone.action?type=1";
+					}else{
+						alert(xmlhttp.responseText); 
+					}
+					
+				}
+			}
+		 }
+		 var timestamp=new Date().getTime();
+		 var str = "name="+name+"&email="+email+"&type="+type+"&timestamp="+timestamp;
+		 xmlhttp.open("POST","/CCF/getpwd.action",true);
+		 xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		 xmlhttp.send(str);
+}
+</script>
+
+</body></html>

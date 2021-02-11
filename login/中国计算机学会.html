@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- saved from url=(0148)https://passport.ccf.org.cn/sso/login?from=aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>登录 | login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="./中国计算机学会_files/jquery.bxslider.css">
+    <link rel="stylesheet" href="./中国计算机学会_files/web-index.css">
+    <script type="text/javascript" src="./中国计算机学会_files/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="./中国计算机学会_files/layer.css" id="layuicss-skinlayercss"></head>
+<body style="background: #FFFFFF;">
+<div class="login_header clearfix l_login_header">
+    <img src="./中国计算机学会_files/logo.png">
+</div>
+<div class="m_login_header">
+</div>
+<div class="login_main">
+    <p class="l_phoneinline l_phonetip">温馨提示：如无账户，请先注册</p>
+    <!--<img src="web-web-images/pc-loginbg.png" class="banner" />-->
+    <div class="login_slider">
+        <img src="./中国计算机学会_files/join.png" class="l_bgimg">
+        <div class="l_login_a l_phonehide">
+            
+        </div>
+        <div class="l_logindiv">
+            <!-- <div class="l_code l_phonehide">
+                <span class="l_codetip">扫码登录更便捷</span>
+            </div> -->
+            <!--扫码登录-->
+            <!-- <div class="l_scancode l_phonehide">
+                <div id="login_qc_container"></div>
+            </div> -->
+            <!--扫码登录结束-->
+            <ul class="l_loginul clearfix">
+                <li class="active" id="l-account-target" card="l-account">
+                    账户登录
+                </li>
+                <li card="l-phone" id="l-phone-target" class="">
+                    动态密码登录
+                </li>
+            </ul>
+            <div class="l_logincard l-account" style="display: block;">
+                <!--pc账号登录begin--->
+                <form id="form-account">
+                    <input type="hidden" name="from" value="aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=">
+                    <input type="hidden" name="openId" value="">
+                    <input type="hidden" name="unionId" value="">
+                    <input type="hidden" name="ext" value="">
+                    <input type="hidden" name="username">
+                    <input type="hidden" name="password">
+                    <div class="l_inputdiv">
+                                <span>
+                                    <img src="./中国计算机学会_files/icon-user.png">
+                                </span>
+                        <input type="text" id="user-name" size="20" onkeydown="if(event.keyCode==32) return false" value="" placeholder="手机号/邮箱/姓名/卡号">
+                    </div>
+                    <div class="l_inputdiv">
+                                <span>
+                                    <img src="./中国计算机学会_files/icon-pwd.png">
+                                </span>
+                        <input type="password" id="pass-word" onkeydown="if(event.keyCode==32) return false" placeholder="请输入密码">
+                    </div>
+                    <p class="l_errtip" id="error-account"></p>
+                </form>
+                <a href="javascript:void(0)" class="l_login" id="login-account">登 录</a>
+            </div>
+
+            <!--pc账号登录end--->
+            <!--手机号登陆-->
+            <div class="l_logincard l-phone" style="display: none;">
+                <form id="form-phone">
+                    <input type="hidden" name="from" value="aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=">
+                    <input type="hidden" name="openId" value="">
+                    <input type="hidden" name="unionId" value="">
+                    <input type="hidden" name="ext" value="">
+                    <div class="l_inputdiv">
+							<span>
+								<img src="./中国计算机学会_files/icon-moblie.png">
+							</span>
+                        <input type="text" class="l_input1" onkeydown="if(event.keyCode==32) return false" name="phone" value="" placeholder="请输入手机号 境外用户请使用账户登录">
+                    </div>
+                    <div class="l_inputdiv">
+                        <input type="text" id="auth-code-p" onkeydown="if(event.keyCode==32) return false" name="checkCode" placeholder="请输入验证码" class="l_input230">
+                        <img src="https://passport.ccf.org.cn/sso/auth_code?v=1612315536296" id="verify-l-phone" width="135" height="40"  style="margin-left: 5px;">
+                    </div>
+                    <div class="l_inputdiv">
+                        <input type="text" onkeydown="if(event.keyCode==32) return false" name="smsCode" placeholder="请输入短信验证码" class="l_input230">
+                        <a href="javascript:void(0);" id="send_sms" class="l_getcode">获取短信验证码</a>
+                    </div>
+                    <p class="l_errtip" id="error-phone"></p>
+                </form>
+                <a href="javascript:void(0)" class="l_login" id="login-phone">登 录</a>
+            </div>
+
+
+            <div class="l_login_bot">
+                <a href="https://passport.ccf.org.cn/sso/login?from=aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=#" onclick="toCCF(&#39;regTo.action?flag=0&#39;)">
+                    <img src="./中国计算机学会_files/icon-join.png">会员注册
+                </a>
+                <a href="https://passport.ccf.org.cn/sso/login?from=aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=#" onclick="toCCF(&#39;apply/user!reg.action?flag=8&#39;)">
+                    <img src="./中国计算机学会_files/icon-regsit.png">用户注册
+                </a>
+                <a href="https://passport.ccf.org.cn/sso/login?from=aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=#" onclick="toCCF(&#39;findPwdBack.action?f=1&#39;)">
+                    <img src="./中国计算机学会_files/icon-forget.png">忘记密码
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div id="login_container">
+
+</div>
+<div class="login_footer">
+    <p>版权所有：中国计算机学会 &nbsp;&nbsp; 技术支持邮箱：conf_support@ccf.org.cn</p>
+    <p><a target="_blank" href="http://www.beian.miit.gov.cn/">二次元ICP备10000000号</a> &nbsp;<img src="./中国计算机学会_files/icon-beian.png">&nbsp; <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802032778">京公网安备11010802032778号</a>
+    </p>
+</div>
+
+
+
+
+<script type="text/javascript" src="./中国计算机学会_files/web-index.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/jquery.base64.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/jsencrypt.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/layer.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/config.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/util.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/layer.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/message.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/auth-code.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/sms.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/login.source.js"></script>
+<script type="text/javascript" src="./中国计算机学会_files/wxLogin.js"></script>
+<script>
+
+    login.init({
+        referUrl: 'aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=',
+    });
+
+    function toCCF(url) {
+        var referer = $.base64.atob('aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi9jY2Yvc3NvL2xvZ2luP1NpdGVJRD0xMjImUmVmZXI9aHR0cHM6Ly93d3cuY2NmLm9yZy5jbi8=');
+        // var memberUrl = 'https://web.ccf.org.cn/CCF/';
+        if (wzUtils.isEmpty(memberUrl)) {
+            message.warn("会员系统注册地址丢失,请联系系统运营人员!");
+            return;
+        }
+        var redirectUrl = memberUrl + url + (referer ? '&url=' + referer : "");
+        window.location.href = redirectUrl;
+    }
+
+    var isLogin = getCookie2('_sys_ack');
+    if (isLogin) {
+        window.location.href = '/sso/platform';
+    }
+
+    function getCookie2(name) {
+        var strcookie = document.cookie;//获取cookie字符串
+        if (strcookie) {
+            var arrcookie = strcookie.split("; ");//分割
+            //遍历匹配
+            for (var i = 0; i < arrcookie.length; i++) {
+                var arr = arrcookie[i].split("=");
+                if (arr[0] == name) {
+                    return arr[1];
+                }
+            }
+        }
+        return "";
+    }
+
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    if (isWeiXin() && wzUtils.isEmpty($("input[name='openId']").val())) {
+        if (window.location.pathname.indexOf('/logout') >= 0) {
+            window.location.href = '/sso/login';
+        }
+    }
+
+
+</script></body></html>

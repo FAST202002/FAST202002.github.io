@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0137)https://web.ccf.org.cn/CCF/apply/user!reg.action?flag=8&url=https://www.ccf.org.cn/ccf/sso/login?SiteID=122&Refer=https://www.ccf.org.cn/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script>window.base='/CCF';</script>
+    <link rel="stylesheet" href="./注册_files/mui.min.css">
+    <link rel="stylesheet" href="./注册_files/index.css">
+	<script type="text/javascript" src="./注册_files/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="./注册_files/reg_add.js"></script>
+	<script type="text/javascript" src="./注册_files/layui.all.js"></script><link id="layuicss-laydate" rel="stylesheet" href="./注册_files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="./注册_files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="./注册_files/code.css" media="all">
+    <script type="text/javascript" src="./注册_files/url.js"></script>
+	<title>注册</title>
+	<style>
+		.error{
+			height:auto;
+		}
+		.zc-nr ul li{
+			position:relative;
+		}
+		.zc-nr .zc-name .m-2 [type="text"], .zc-nr .zc-password .m-2 [type="password"], .zc-nr .zc-qrpassword .m-2 [type="password"], .zc-tel .m-2 .tel{
+			border: 1px solid #ccc;
+		}
+	</style>
+    <script></script>
+</head>
+<body class="bg-img">
+		<header class="mui-bar mui-bar-nav type2">
+			<h1 class="mui-title">用户注册</h1>
+		</header>
+		<div class="wp-header clearfix">
+			<div class="header-left">
+				<img src="./注册_files/wm-denglu_03.png" alt="" width="20%"><h1>用户注册 | <a href="/" target="_blank" style="color: #c00;">首页</a></h1>
+			</div>
+			<!--
+			<div class="header-right">
+				<span>还不是CCF会员？<a href="#">立即注册</a></span>
+			</div>
+			-->
+		</div>
+		 <div class="zc-main">
+		 	
+			<div class="zc-content">
+				<div class="zc-title"><span>用户注册</span></div>
+				<div class="zc-nr">
+					<form id="fm" method="post" >
+					<input type="hidden" id="flag" value="1">
+					<input type="hidden" name="sysuser.regSource" value="">
+					<input type="hidden" name="sysuser.regType" value="2">
+					<input type="hidden" name="url">
+					<input type="hidden" id="regTerminal" name="sysuser.regTerminal" value="">
+					<input type="hidden" id="userRole" name="sysuser.roleCode" value="99">
+					<ul>
+						<li class="zc-name clearfix"><span class="m-1"><span style="color:red">*</span>用户类型：</span>
+							<span class="m-2"><label>
+									<input type="radio" name="radiReg" value="07">
+									专业
+								</label>
+								<label>
+									<input type="radio" name="radiReg" value="05">
+									学生
+								</label>
+								</span>
+							<span class="error" id="error_flag"></span>
+						</li>
+						<li class="zc-name clearfix"><span class="m-1"><span style="color:red">*</span>姓名：</span>
+							<span class="m-2"><input type="text" id="username" name="sysuser.name" onblur="checkName();" placeholder="您的真实姓名"></span>
+							<span class="error" id="error_flag"></span>
+						</li>
+						<li class="zc-password clearfix"><span class="m-1"><span style="color:red">*</span>设置密码：</span>
+							<span class="m-2"><input id="password" name="sysuser.password" maxlength="16" onblur="checkPwd();" type="password" placeholder="数字和字母组合"></span>
+							<span class="error" id="password1" style="display:block;"></span>
+						</li>
+						<li class="zc-qrpassword clearfix"><span class="m-1"><span style="color:red">*</span>确认密码：</span>
+							<span class="m-2"><input type="password" id="repwd" name="repwd" maxlength="16" onblur="confirmPwd()" placeholder="请再次输入密码"></span>
+							<span class="error" id="repwd1"></span>
+						</li>
+						<li class="zc-name clearfix" id="cEmail" style="display:none"><span class="m-1"><span style="color:red">*</span>邮箱：</span>
+							<span class="m-2"><input type="text" id="email" name="sysuser.email" onblur="checkEmail()"></span>
+							<span class="error" id="email1"></span>
+							<div class="e-mail"><a href="javascript:void(0)" onclick="upEmail();" style="color: #c00;">手机认证</a></div>
+						</li>
+						<li class="zc-tel clearfix" id="cPhone"><span class="m-1"><span style="color:red">*</span>手机号：</span>
+						<i>0086</i><em>|</em>
+							<span class="m-2"><input class="tel" id="phone" name="sysuser.contact" onblur="checkPhone();" type="text" placeholder="境外用户请使用邮箱注册">
+							<span class="error" id="phone1"></span></span>
+							<div class="e-mail"><a href="javascript:void(0)" onclick="upEmail();" style="color: #c00;">邮箱认证</a></div>
+						</li>
+						
+						<li class="zc-yzm clearfix"><span class="m-1"><span style="color:red">*</span>验证码：</span>
+							<span class="m-3"><input type="text" id="imgCode" name="yzm" "></span>
+							<img src="https://web.ccf.org.cn/CCF/AuthCode?code=0.12296253730363005" alt="" id="imgVerify" onclick="changeImg();">
+							<span class="error" id="cuo"></span>
+						</li>
+						<li class="zcsj-yzm clearfix"><span class="m-1"><span style="color:red">*</span><h id="ifPhoneOrEmail">短信验证码<h>：</h></h></span>
+							<span class="m-3"><input type="text" id="pCode" name="pCode" "></span> 
+							<a class="hqyzm" href="javascript:alert('服务器错误，获取失败！\n 错误代码:0x3f3f3f3f')" id="phoneCode" onclick="send();">获取验证码</a>
+							<a href="javascript:void(0)" id="phoneCode2" style="display:none">获取短信验证码</a>
+							<span class="error" id="code1"></span>
+						</li>
+					</ul>
+				</form></div>
+				<div class="xian"></div>
+
+				<div class="wm-tl">
+					<input type="checkbox" id="agreement" name="agreement" checked="true">我已阅读<a href="/term/use.pdf" target="_blank">本站使用条例</a>，并遵守<a href="/term/rule.pdf" target="_blank">班规</a>
+					<span class="error" id="agreement1"></span>
+				</div>
+
+				<div class="zhuce">
+					<a href="javascript:alert('数据库错误，注册失败！\n 错误代码:0x3f3f3f3f')">注&nbsp;&nbsp;&nbsp;&nbsp;册</a>
+				</div>
+                <div class="login_tip"><i></i><a href="javascript:void(0)" id="login">已拥有帐号？立即登录</a><i></i></div>
+			</div>
+		 </div>
+		 
+
+<script>
+	$("#login").click(function(){
+        window.location.href=sso_from_url7+"platform";
+	});
+    $.ajax({
+        type : 'post',
+        url : '/CCF/logout',
+        dataType: 'jsonp',
+        async : false,
+        success : function(msg) {
+        }
+    });
+    $.ajax({
+        type : 'post',
+        url : sso_from_url7+'logout',
+        dataType: 'jsonp',
+        async : false,
+        success : function(msg) {
+        }
+    })
+</script>
+ 
+</body></html>
